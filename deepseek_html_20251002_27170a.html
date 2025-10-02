@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Link-Social - Luxury Social Media</title>
+    <style>
+        /* Luxury CSS Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        :root {
+            --primary-gold: #D4AF37; --secondary-gold: #F5E6B3; --dark-bg: #1a1a1a;
+            --light-bg: #2d2d2d; --text-light: #ffffff; --text-gray: #b0b0b0;
+            --gradient: linear-gradient(135deg, #D4AF37, #F5E6B3);
+        }
+        body { background-color: var(--dark-bg); color: var(--text-light); min-height: 100vh; }
+        
+        /* Header Styles */
+        .header { background: var(--light-bg); padding: 1rem 2rem; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .logo { font-size: 2rem; font-weight: bold; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        
+        /* Hero Section */
+        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-bg.jpg'); background-size: cover; background-position: center; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 2rem; }
+        .hero-content h1 { font-size: 4rem; margin-bottom: 1rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Features Section */
+        .features { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .feature-card { background: var(--light-bg); padding: 2rem; border-radius: 15px; text-align: center; transition: transform 0.3s ease; border: 1px solid rgba(212, 175, 55, 0.1); }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--primary-gold); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">People Link-Social</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="cta-button">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to People Link-Social</h1>
+            <p>Experience luxury social networking like never before.</p>
+            <a href="#" class="cta-button">Join Exclusive Community</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Premium Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👑</div>
+                <h3>Premium Profiles</h3>
+                <p>Luxurious profile customization</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3>Exclusive Content</h3>
+                <p>Access premium content</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Basic JavaScript
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

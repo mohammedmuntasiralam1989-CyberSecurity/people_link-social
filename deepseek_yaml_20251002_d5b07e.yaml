@@ -1,0 +1,57 @@
+# digitalocean-app-spec.yml
+name: people-link-social
+services:
+- name: web
+  github:
+    repo: your-username/people-link-social
+    branch: main
+  run_command: npm start
+  instance_count: 3
+  instance_size_slug: professional-xs
+  routes:
+  - path: /
+  health_check:
+    http_path: /health
+    initial_delay_seconds: 30
+
+- name: api
+  github:
+    repo: your-username/people-link-social-api
+    branch: main
+  run_command: node server.js
+  instance_count: 2
+  instance_size_slug: professional-s
+  routes:
+  - path: /api
+
+- name: redis
+  image:
+    registry_type: DOCKER_HUB
+    repository: redis
+    tag: alpine
+  instance_count: 1
+  instance_size_slug: basic-xs
+
+- name: postgres
+  image:
+    registry_type: DOCKER_HUB
+    repository: postgres
+    tag: '14'
+  instance_count: 1
+  instance_size_slug: basic-s
+  databases:
+  - name: peoplelink
+    engine: PG
+  envs:
+  - key: POSTGRES_DB
+    value: peoplelink
+  - key: POSTGRES_USER
+    value: ${DB_USER}
+  - key: POSTGRES_PASSWORD
+    value: ${DB_PASSWORD}
+
+domains:
+- name: peoplelink-social.com
+  type: PRIMARY
+- name: www.peoplelink-social.com
+  type: ALIAS
